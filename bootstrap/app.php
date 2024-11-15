@@ -13,6 +13,12 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         //
     })
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->alias([
+            'admin_or_kitchen' => \App\Http\Middleware\AdminOrKitchen::class,
+        ]);
+    })
+
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
