@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SiteSettingController;
+use App\Http\Controllers\TableController;
 use Illuminate\Support\Facades\Route;
 use function App\Helpers\getSiteSetting;
 
@@ -25,7 +27,8 @@ Route::prefix('admin')
         Route::get('/dashboard', function () {return view('backend.dashboard');})->name('dashboard');
         Route::get('site-settings', [SiteSettingController::class, 'index'])->name('site-settings.index');
         Route::post('site-settings', [SiteSettingController::class, 'store'])->name('site-settings.create');
-
+        Route::resource('tables', TableController::class);
+        Route::post('/tables/search', [SearchController::class, 'searchTables'])->name('tables.search');
     });
 
 
