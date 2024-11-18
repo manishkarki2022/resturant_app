@@ -1,19 +1,20 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="{{route('dashboard')}}" class="brand-link text-center">
+    <a href="{{route('dashboard')}}" class="brand-link text-center" style="text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 0;">
         <!-- Logo -->
         <img src="{{ file_exists(public_path('app_logo/' . websiteInfo()->app_logo)) ? asset('app_logo/' . websiteInfo()->app_logo) : asset('default/no-image.png') }}"
              alt="{{ websiteInfo() ? websiteInfo()->app_name : 'Default App Name' }}"
              class="brand-image img-circle elevation-3"
-             style="max-width: 48px; max-height: 50px;">
-
+             style="max-width: 60px; max-height: 60px; margin-bottom: 10px; border: 2px solid #ddd; padding: 5px; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
 
         <!-- Website Info -->
-        <span class="brand-text font-weight-light">
+        <span class="brand-text font-weight-light" style="font-size: 18px; font-weight: 600;">
         {{ websiteInfo() ? websiteInfo()->app_name : 'Default App Name' }}
     </span>
-        <br>
-        <span class="text-sm text-muted">Hello {{ Auth::user()->name }}</span>
+        <span class="text-sm text-muted" style="font-size: 14px; color: #888;">
+        Hello {{ Auth::user()->name }}
+    </span>
     </a>
+
 
     <div class="sidebar">
         <nav class="mt-2">
@@ -51,6 +52,29 @@
                             <a href="{{ route('tables.index') }}" class="nav-link {{ request()->route()->named('tables.index') ? 'active' : '' }}">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                 <p>View Tables</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item {{ request()->route()->named('categories.create') || request()->route()->named('categories.index') || request()->route()->named('categories.edit') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tags"></i> <!-- Icon for Categories -->
+                        <p>
+                            Categories
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('categories.create') }}" class="nav-link {{ request()->route()->named('categories.create') ? 'active' : '' }}">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                <p>Add Category</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('categories.index') }}" class="nav-link {{ request()->route()->named('categories.index') ? 'active' : '' }}">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                <p>View Categories</p>
                             </a>
                         </li>
                     </ul>

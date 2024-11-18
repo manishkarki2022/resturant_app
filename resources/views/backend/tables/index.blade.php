@@ -40,7 +40,7 @@
 
                         <div class="table-responsive">
                             <table id="tablesTable" class="table table-bordered table-hover">
-                                <thead class="thead-dark">
+                                <thead >
                                 <tr>
                                     <th class="text-center">#</th>
                                     <th class="text-center">Table Number</th>
