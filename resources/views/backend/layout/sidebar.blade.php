@@ -79,6 +79,30 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item {{ request()->route()->named('menu-items.create') || request()->route()->named('menu-items.index') || request()->route()->named('menu-items.edit') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-utensils"></i> <!-- Icon for Menu Items -->
+                        <p>
+                            Menu Items
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('menu-items.create') }}" class="nav-link {{ request()->route()->named('menu-items.create') ? 'active' : '' }}">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                <p>Add Menu Item</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('menu-items.index') }}" class="nav-link {{ request()->route()->named('menu-items.index') ? 'active' : '' }}">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                <p>View Menu Items</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
             </ul>
         </nav>
     </div>

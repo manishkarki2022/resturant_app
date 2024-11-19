@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login - {{websiteInfo()->app_name}}</title>
 
     <!-- Link AdminLTE CSS -->
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="icon" type="image/png" href="{{ websiteInfo() && websiteInfo()->first() && websiteInfo()->app_logo ? asset('app_logo/' . websiteInfo()->app_logo) : asset('default/website.png') }}">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-    <div class="login-logo">
-        <a href="#"><b>Admin</b>LTE</a>
-    </div>
+        <div class="login-logo">
+            <img src="{{  websiteInfo()->app_logo ? asset('app_logo/' . websiteInfo()->app_logo) : asset('default/no-image.png') }}" class='img-circle elevation-2' width="80" height="80" alt="">
+            <br>
+            <a href="{{ route('login') }}"><b>{{ websiteInfo() ? websiteInfo()->app_name : 'Default App Name' }}</b></a>
+        </div>
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">

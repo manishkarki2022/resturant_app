@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('adminlte/plugins/toastr/toastr.min.css') }}">
+{{--    link rel="stylesheet" href="{{asset('adminlte/plugins/select2/css/select2.min.css')}}">--}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/token_input_bootstrap/css/bootstrap-tokenfield.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('adminlte/plugins/sweetalert2/sweetalert2.min.css') }}">
     <link rel="icon" type="image/png" href="{{ websiteInfo() && websiteInfo()->first() && websiteInfo()->app_logo ? asset('app_logo/' . websiteInfo()->app_logo) : asset('default/website.png') }}">
@@ -19,6 +21,7 @@
             --secondary-color: {{ $siteSetting->theme_color_secondary ?? '#6c757d' }};
         }
     </style>
+    @yield('customCss')
 
 
 
@@ -50,6 +53,9 @@
 <script src="{{ asset('adminlte/plugins/toastr/toastr.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/token_input_bootstrap/bootstrap-tokenfield.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<!-- Select2 -->
+{{--<script src="{{asset('adminlte/plugins/select2/js/select2.full.min.js')}}"></script>--}}
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script>
     $(document).ready(function() {
@@ -88,6 +94,13 @@
             }
         });
     }
+    $(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2();
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+    })
 </script>
 
 @yield('customJs')
