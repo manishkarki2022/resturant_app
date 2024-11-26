@@ -47,6 +47,10 @@
                                     <th>Logo & Icon</th>
                                     <th>Name</th>
                                     <th>Status</th>
+                                    <th>Show on Nav</th>
+                                    <th>Nav Index</th>
+                                    <th>Show on Home</th>
+                                    <th>Home Index</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
@@ -72,6 +76,22 @@
                                             @endif
                                         </td>
                                         <td>
+                                            @if($category->show_on_nav)
+                                                <i class="fas fa-check-circle text-success"></i> Yes
+                                            @else
+                                                <i class="fas fa-times-circle text-danger"></i> No
+                                            @endif
+                                        </td>
+                                        <td>{{ $category->nav_index }}</td>
+                                        <td>
+                                            @if($category->show_on_home)
+                                                <i class="fas fa-check-circle text-success"></i> Yes
+                                            @else
+                                                <i class="fas fa-times-circle text-danger"></i> No
+                                            @endif
+                                        </td>
+                                        <td>{{ $category->home_index }}</td>
+                                        <td>
                                             <a class="btn btn-warning btn-sm" href="{{ route('categories.edit', $category) }}">
                                                 <i class="fas fa-pencil-alt"></i> Edit
                                             </a>
@@ -86,7 +106,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="5" class="text-center">No categories found.</td>
+                                        <td colspan="9" class="text-center">No categories found.</td>
                                     </tr>
                                 @endforelse
                                 </tbody>
@@ -125,7 +145,7 @@
         function updateTable(data) {
             let html = '';
             if (data.categories.data.length === 0) {
-                html += `<tr><td colspan="5" class="text-center">No categories found.</td></tr>`;
+                html += `<tr><td colspan="9" class="text-center">No categories found.</td></tr>`;
             } else {
                 data.categories.data.forEach(function(category, index) {
                     // Fallback for logo
@@ -148,6 +168,18 @@
                         `<i class="fas fa-times-circle text-danger"></i> Inactive`}
                     </td>
                     <td>
+                        ${category.show_on_nav === 1 ?
+                        `<i class="fas fa-check-circle text-success"></i> Yes` :
+                        `<i class="fas fa-times-circle text-danger"></i> No`}
+                    </td>
+                    <td>${category.nav_index}</td>
+                    <td>
+                        ${category.show_on_home === 1 ?
+                        `<i class="fas fa-check-circle text-success"></i> Yes` :
+                        `<i class="fas fa-times-circle text-danger"></i> No`}
+                    </td>
+                    <td>${category.home_index}</td>
+                    <td>
                         <a class="btn btn-warning btn-sm" href="${editUrl}">
                             <i class="fas fa-pencil-alt"></i> Edit
                         </a>
@@ -165,7 +197,5 @@
             }
             $('#categoriesTable tbody').html(html);
         }
-
-
     </script>
 @endsection

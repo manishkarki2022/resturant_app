@@ -111,15 +111,7 @@
     </section>
 @endsection
         @section('customJs')
-            <script>
-                $(document).ready(function() {
-                    // Initialize Tokenfield for social_links input
-                    $('#social_links').tokenfield({
-                        delimiter: [',', ' '], // Define your delimiter for separating tokens
-                        showAutocompleteOnFocus: true,
-                    });
-                });
-            </script>
+
 
 @endsection
 

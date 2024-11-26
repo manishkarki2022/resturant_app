@@ -50,6 +50,9 @@
                                     <div class="form-group">
                                         <label for="name">Category Name</label>
                                         <input type="text" id="name" name="name" class="form-control" placeholder="Enter Category Name" value="{{ old('name') }}" required>
+                                        @error('name')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -60,6 +63,9 @@
                                     <div class="form-group">
                                         <label for="description">Description</label>
                                         <textarea id="description" name="description" class="form-control" placeholder="Enter Category Description">{{ old('description') }}</textarea>
+                                        @error('description')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -70,6 +76,9 @@
                                     <div class="form-group">
                                         <label for="logo">Logo</label>
                                         <input type="file" id="logo" name="logo" class="form-control" accept="image/*" onchange="previewLogoImage(event)">
+                                        @error('logo')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -87,6 +96,55 @@
                                             <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Active</option>
                                             <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
                                         </select>
+                                        @error('status')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!-- Show on Navigation -->
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="show_on_nav" name="show_on_nav" value="1" {{ old('show_on_nav') ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="show_on_nav">Show on Navbar</label>
+                                    </div>
+                                    @error('show_on_nav')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <!-- Navigation Index -->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="nav_index">Navbar Number</label>
+                                        <input type="number" id="nav_index" name="nav_index" class="form-control" value="{{ old('nav_index') }}" placeholder="Enter navigation index">
+                                        @error('nav_index')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!-- Show on Home -->
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="show_on_home" name="show_on_home" value="1" {{ old('show_on_home') ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="show_on_home">Show on Home</label>
+                                    </div>
+                                    @error('show_on_home')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <!-- Home Index -->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="home_index">Home Index</label>
+                                        <input type="number" id="home_index" name="home_index" class="form-control" value="{{ old('home_index') }}" placeholder="Enter home index">
+                                        @error('home_index')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>

@@ -69,6 +69,28 @@
                                 @endif
                                 <input type="file" class="form-control" id="logo" name="logo" accept="image/*" onchange="previewImage(event)">
                             </div>
+                            <!-- Show on Navigation Field -->
+                            <div class="form-group">
+                                <label for="show_on_nav">Show on Navbar</label>
+                                <input type="checkbox" id="show_on_nav" name="show_on_nav" value="1" {{ old('show_on_nav', $category->show_on_nav) ? 'checked' : '' }}>
+                            </div>
+                            <!-- Navigation Index Field -->
+                            <div class="form-group">
+                                <label for="nav_index">Navbar Number</label>
+                                <input type="number" class="form-control" id="nav_index" name="nav_index" value="{{ old('nav_index', $category->nav_index) }}">
+                            </div>
+
+                            <!-- Show on Home Field -->
+                            <div class="form-group">
+                                <label for="show_on_home">Show on Home</label>
+                                <input type="checkbox" id="show_on_home" name="show_on_home" value="1" {{ old('show_on_home', $category->show_on_home) ? 'checked' : '' }}>
+                            </div>
+
+                            <!-- Home Index Field -->
+                            <div class="form-group">
+                                <label for="home_index">Home Index</label>
+                                <input type="number" class="form-control" id="home_index" name="home_index" value="{{ old('home_index', $category->home_index) }}">
+                            </div>
 
                             <!-- Status Field -->
                             <div class="form-group">
